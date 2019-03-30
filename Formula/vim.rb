@@ -49,7 +49,6 @@ class Vim < Formula
                           "--enable-perlinterp",
                           "--enable-rubyinterp",
                           "--enable-python2interp",
-                          "--enable-python3interp",
                           "--enable-gui=no",
                           "--without-x",
                           "--enable-luainterp",
@@ -67,11 +66,11 @@ class Vim < Formula
 
   test do
     (testpath/"commands.vim").write <<~EOS
-      :python3 import vim; vim.current.buffer[0] = 'hello python3'
+      :python import vim; vim.current.buffer[0] = 'hello python'
       :wq
     EOS
     system bin/"vim", "-T", "dumb", "-s", "commands.vim", "test.txt"
-    assert_equal "hello python3", File.read("test.txt").chomp
+    assert_equal "hello python", File.read("test.txt").chomp
     assert_match "+gettext", shell_output("#{bin}/vim --version")
   end
 end
