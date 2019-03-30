@@ -48,6 +48,7 @@ class Vim < Formula
                           "--with-compiledby=Homebrew",
                           "--enable-perlinterp",
                           "--enable-rubyinterp",
+                          "--enable-python2interp",
                           "--enable-python3interp",
                           "--enable-gui=no",
                           "--without-x",
